@@ -26,9 +26,9 @@ $(document).ready(function(e) {
 	
 	window.addEventListener('orientationchange', lockOrientation,true);
 	
-	$('#canvas').attr('width', Math.min($(window).width(), 400));
-	$('#canvas').attr('height', Math.min($(window).height()-100, 300);
-	//$('#canvas').css("margin-left: auto; margin-right: auto");
+	$('#canvas').attr('width',$(window).width());
+	$('#canvas').attr('height',300);
+	
 	//document.getElementById('canvas').setAttribute("width", window.innerWidth);
 	//document.getElementById('canvas').setAttribute("height", window.innerHeight-220);
 	
