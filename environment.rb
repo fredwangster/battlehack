@@ -8,7 +8,7 @@ require 'dm-migrations'
 require 'ostruct'
 require 'sinatra' unless defined?(Sinatra)
 
-configure do
+configure :development do
    SiteConfig = OpenStruct.new(
 		   :title => 'Petitionly',
 		   :author => 'Fred Wang',
@@ -23,4 +23,8 @@ configure do
    
    DataMapper.auto_upgrade!
 
+end
+
+configure :production do
+   DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 end

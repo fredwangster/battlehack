@@ -10,6 +10,14 @@ gem 'dm-validations'
 gem 'dm-aggregates'
 gem 'dm-migrations'
 
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 group :test do
   gem 'rspec', :require => 'spec'
   gem 'rack-test'
