@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.jpg" />
 <link rel="apple-touch-startup-image" href="startup.jpg" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<title>Painty</title>
+<title>Petitionly</title>
 
 <script language="javascript" src="/js/jquery-1.5.1.min.js"></script>
 <script language="javascript" src="/js/jquery-ui-1.8.14.custom.min.js"></script>
@@ -19,7 +19,6 @@
 <link rel="stylesheet" media="screen" type="text/css" href="/css/jquery-ui-1.8.14.custom.css" />
 
 <meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -409,8 +408,7 @@ canvas {
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/about">About</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
@@ -459,8 +457,14 @@ canvas {
 
       <div class="span10 offset1" style="text-align: center;">
         <p class="lead" style="padding-top: 15px; padding-bottom: 15px;">Sign above</p>
+
+        <form action ="/petition/<%= @petition.id %>/sign2" method="post" id="sign-box">
+        <input type="hidden" name="name" value="<%= @s[:name] %>">
+         <input type="hidden" name="email" value="<%= @s[:email] %>">
+         <input type="hidden" id = "siggy" name="siggy" value="generate from javascript replace this">
         <a id="but1" class="btn btn-large btn-primary" style="border: none; padding-left: 25px; padding-right: 25px; background-color: #FF9999;">RESET</a>
         <a id="submit" class="btn btn-large btn-primary" style="border: none; padding-left: 20px; padding-right: 20px;" href="#">SUBMIT</a>
+        </form>
       </div>
       
 
@@ -485,7 +489,9 @@ canvas {
             $('#submit').click(function(){
                //console.log("hello");
                  var canvas = document.getElementById("canvas");
-                 window.open(canvas.toDataURL("image/png"));
+                 var img_png = canvas.toDataURL("image/png");
+                 $("#siggy").val(img_png);
+                 $('#sign-box').submit();
                });
           });
          
@@ -512,6 +518,5 @@ canvas {
         })
       }(window.jQuery)
     </script>
-    <script src="/js/holder/holder.js"></script>
 </body>
 </html>
