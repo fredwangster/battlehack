@@ -256,6 +256,74 @@
       }
 
     }
+    
+    
+.wrapperprogress {
+  margin-bottom: 50px;
+  width: 100px; /* Set the size of the progress bar */
+  height: 100px;
+  position: relative; /* Enable clipping */
+  clip: rect(0px, 100px, 100px, 50px); /* Hide half of the progress bar */
+}
+/* Set the sizes of the elements that make up the progress bar */
+.circle {
+  width: 80px;
+  height: 80px;
+  border: 10px solid #8ABDAA;
+  border-radius: 50px;
+  position: absolute;
+  clip: rect(0px, 50px, 100px, 0px);
+}
+
+/* Using the data attributes for the animation selectors. */
+/* Base settings for all animated elements */
+div[data-anim~=base] {
+  -webkit-animation-iteration-count: 1;  /* Only run once */
+  -webkit-animation-fill-mode: forwards; /* Hold the last keyframe */
+  -webkit-animation-timing-function:linear; /* Linear animation */
+}
+
+.wrapperprogress[data-anim~=wrapperprogress] {
+  -webkit-animation-duration: 0.01s; /* Complete keyframes asap */
+  -webkit-animation-delay: 1s; /* Wait half of the animation */
+  -webkit-animation-name: close-wrapper; /* Keyframes name */
+}
+
+.circle[data-anim~=left] {
+  -webkit-animation-duration: 1.5s; /* Full animation time */
+  -webkit-animation-name: left-spin;
+}
+
+.circle[data-anim~=right] {
+  -webkit-animation-duration: .8s; /* Half animation time */
+  -webkit-animation-name: right-spin;
+}
+
+@-webkit-keyframes right-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+  }
+}
+/* Rotate the left side of the progress bar from 0 to 360 degrees */
+@-webkit-keyframes left-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(<%= (@completed.to_f / @petition.goal * 360).floor %>deg);
+  }
+}
+/* Set the wrapper clip to auto, effectively removing the clip */
+@-webkit-keyframes close-wrapperprogress {
+  to {
+    clip: rect(auto, auto, auto, auto);
+  }
+}
+
+    
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -293,7 +361,7 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li><a href="../">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="../about">About</a></li>
                 <li class="active"><a href="#<%= @petition.id%>">Admin</a></li>
               </ul>
             </div><!--/.nav-collapse -->
@@ -321,7 +389,8 @@
         <div class="wrapperprogress" data-anim="base wrapperprogress" style="margin-right: auto; margin-left: auto;">
             <div class="circle" data-anim="base left"></div>
             <div class="circle" data-anim="base right"></div>
-            <p style="font-size: 20px; font-weight: bold; padding-top: 39px;"><%= @completed.to_f / @petition.goal * 100  %></p>
+            <p style="font-size: 20px; font-weight: bold; padding-top: 35px;"><%= (@completed.to_f / @petition.goal * 100).floor  %></p>
+	    <p style="font-size: 18px; font-weight: bold; margin-top: -5px; color: #CACAD9;">%</p>
         </div>
         <p class="lead" style="color: #A8A8B7; margin-top: -30px; padding-bottom: 20px; font-size: 18px;"><%= @completed %> of <%= @petition.goal %> signatures collected</p>
         <div style="margin-left: auto; margin-right: auto;">

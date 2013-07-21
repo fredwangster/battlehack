@@ -410,7 +410,7 @@ canvas {
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li><a href="../../">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="../../about">About</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
@@ -462,8 +462,8 @@ canvas {
         <a id="but1" class="btn btn-large btn-primary" style="border: none; padding-left: 10px; padding-right: 10px; background-color: #FF9999;">RESET</a>
 	<div style="padding-top: 30px;">
 	<form action="/petition/<%= @petition.id %>/sign2" method="post" id="edit">
-		<input type="hidden" name="name" value="{%= @s.name }">
-		<input type="hidden" name="email" value="{%= @s.email }">
+		<input type="hidden" name="name" value="<%= @s.name %>">
+		<input type="hidden" name="email" value="<%= @s.email %>">
 		<input type="hidden" name="siggy" value="generate from javascript replace this">
 		<input type="submit" value="SUBMIT" class="btn btn-large btn-primary" style="border: none; padding-left: 60px; padding-right: 60px;">
 		</form>

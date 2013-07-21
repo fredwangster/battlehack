@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,8 +9,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="../../css/bootstrap.css" rel="stylesheet">
-    <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
     <style>
@@ -32,13 +31,13 @@
 
     /* Special class on .container surrounding .navbar, used for positioning it into place. */
     .navbar-wrapper {
-      position: relative;
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
       z-index: 10;
       margin-top: 0px;
-      margin-bottom: 0px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
     .navbar-wrapper .navbar {
 
@@ -266,7 +265,7 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precompaosed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
@@ -290,13 +289,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="../">Petitionly</a>
+            <a class="brand" href="#">Petitionly</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li><a href="../">Home</a></li>
-                <li><a href="../about">About</a></li>
-                <li><a href="/user/petition/<%= @petition.id%>">Admin</a></li>
+                <li class="active"><a href="#a">About</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
@@ -306,6 +304,21 @@
 
 
 
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="bootstrap/img/about.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>FROM THE TEAM THAT BROUGHT YOU PAGEVAMP</h1>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.carousel -->
 
 
 
@@ -319,19 +332,13 @@
       <!-- START THE FEATURETTES -->
 
       <div class="span10 offset1" style="text-align: center;">
-        <h2 class="featurette-heading" style="padding-bottom: 20px; padding-top: 20px;"><%= @petition.title %></h2>
-        <p class="lead"><%= @petition.description %></p>
-        <div class="progress" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-            <div class="bar" style="width: <%= @completed.to_f / @petition.goal * 100  %>%; background: #58937C;"></div>
-        </div>
-        <p class="lead" style="color: #A8A8B7; padding: 10px; font-size: 18px;"><%= @completed %> of <%= @petition.goal %> signatures collected</p>
-	<form action="/petition/<%= @petition.id %>/sign1" method="post" id="edit">
-		<input type="text" name="name" placeholder="name"><br>
-		<input type="text" name="email" placeholder="email"><br>
-		<div style="padding-top: 15px;">
-		<input type="submit" value="SIGN" class="btn btn-large btn-primary" style="border: none; padding-left: 50px; padding-right: 50px;">
-		</div>
-		</form>
+        <h2 class="featurette-heading" style="padding-bottom: 30px; padding-top: 20px;">Inspired by a chance encounter.</h2>
+        <p class="lead" style="text-align: justify;">
+        It was a warm summer day when we stumbled into a lovely Lower East Side restaurant.
+        As we payed for our food, the cashier asked us if we would be interested in signing their petition to allow for sidewalk seating.
+        In her hand was a disorganized clipboard holding together sheets filled with scribbles. Going through all that work to get the signatures only to have more work to organize and make sense of them later didn't seem right.
+        But there was no other option available.<br><br>
+        In a world of tablets and smartphones, this hassle can and should be avoided. That's why we made Petitionly.</p>
       </div>
       
 
@@ -353,19 +360,19 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/bootstrap-transition.js"></script>
-    <script src="../../js/bootstrap-alert.js"></script>
-    <script src="../../js/bootstrap-modal.js"></script>
-    <script src="../../js/bootstrap-dropdown.js"></script>
-    <script src="../../js/bootstrap-scrollspy.js"></script>
-    <script src="../../js/bootstrap-tab.js"></script>
-    <script src="../../js/bootstrap-tooltip.js"></script>
-    <script src="../../js/bootstrap-popover.js"></script>
-    <script src="../../js/bootstrap-button.js"></script>
-    <script src="../../js/bootstrap-collapse.js"></script>
-    <script src="../../js/bootstrap-carousel.js"></script>
-    <script src="../../js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap-transition.js"></script>
+    <script src="bootstrap/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/js/bootstrap-button.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
     <script>
       !function ($) {
         $(function(){
@@ -374,6 +381,6 @@
         })
       }(window.jQuery)
     </script>
-    <script src="../../js/holder/holder.js"></script>
+    <script src="bootstrap/js/holder/holder.js"></script>
   </body>
 </html>
