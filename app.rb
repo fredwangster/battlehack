@@ -54,19 +54,25 @@ end
 #signature page
 post '/petition/:id/sign1' do
    @petition = Petition.get(params[:id])
+   @s = {
+	:name => params[:name],
+	:email => params[:email]
+   }
+   
    erb :signature
 end
 
 post '/petition/:id/sign2' do
    pass = Petition.get(params[:id])
    @petition = Petition.get(params[:id])
-   s = Signature.new
-   s.attributes = {
+
+   @s = {
 	:name => params[:name],
 	:email => params[:email],
 	:siggy => params[:siggy]
    }
-   @s = s
+   
+   @s[:name]
    pass.signatures << Signature.create(
 	:name => params[:name],
 	:email => params[:email],
