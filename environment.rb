@@ -6,7 +6,6 @@ require 'dm-validations'
 require 'dm-aggregates'
 require 'dm-migrations'
 require 'ostruct'
-
 require 'sinatra' unless defined?(Sinatra)
 
 configure do

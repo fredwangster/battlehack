@@ -322,7 +322,7 @@
         <h2 class="featurette-heading" style="padding-bottom: 20px; padding-top: 20px;"><%= @petition.title %></h2>
         <p class="lead"><%= @petition.description %></p>
         <div class="progress" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-            <div class="bar" style="width: <%= @completed.to_f / @petition.goal * 100  %>%; background: #58937C;"></div>
+            <div class="bar" style="width: <%= [(@completed.to_f / @petition.goal * 100),100].min  %>%; background: #58937C;"></div>
         </div>
         <p class="lead" style="color: #A8A8B7; padding: 10px; font-size: 18px;"><%= @completed %> of <%= @petition.goal %> signatures collected</p>
 	<form action="/petition/<%= @petition.id %>/sign1" method="post" id="edit">

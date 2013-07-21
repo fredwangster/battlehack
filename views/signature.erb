@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=1024, user-scalable=no, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.jpg" />
 <link rel="apple-touch-startup-image" href="startup.jpg" />
@@ -18,12 +18,6 @@
 <script type="text/javascript" src="../../js/farbtastic.js"></script>
 <link rel="stylesheet" media="screen" type="text/css" href="../../css/farbtastic.css" />
 <link rel="stylesheet" media="screen" type="text/css" href="../../css/jquery-ui-1.8.14.custom.css" />
-
-<meta charset="utf-8">
-    <title>Carousel Template &middot; Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
@@ -315,8 +309,6 @@ body {
 }
 canvas {
 	position: absolute;
-	top 0px;
-	left: 0px;
 	cursor: crosshair;
 	background-color: #C2DAD0;
 	margin: 0px;
@@ -421,10 +413,11 @@ canvas {
     
     
     <div id="container">
-    
+      <div class="span10 offset1">
         <canvas id="canvas" width="500" height="300">
             <p id="error">Please upgrade your browser.</p>
         </canvas>
+      </div>
         
         <div id="control">
         
@@ -461,12 +454,12 @@ canvas {
         <p class="lead" style="padding-top: 15px; padding-bottom: 5px;">Sign above</p>
         <a id="but1" class="btn btn-large btn-primary" style="border: none; padding-left: 10px; padding-right: 10px; background-color: #FF9999;">RESET</a>
 	<div style="padding-top: 30px;">
-	<form action="/petition/<%= @petition.id %>/sign2" method="post" id="edit">
-		<input type="hidden" name="name" value="<%= @s[:name] %>">
-		<input type="hidden" name="email" value="<%= @s[:email] %>">
-		<input type="hidden" name="siggy" value="generate from javascript replace this">
-		<input type="submit" value="SUBMIT" class="btn btn-large btn-primary" style="border: none; padding-left: 60px; padding-right: 60px;">
-		</form>
+  	<form action="/petition/<%= @petition.id %>/sign2" method="post" id="sign-box">
+  		<input type="hidden" name="name" value="<%= @s[:name] %>">
+  		<input type="hidden" name="email" value="<%= @s[:email] %>">
+  		<input type="hidden" id = "siggy" name="siggy" value="generate from javascript replace this">
+  		<a id = "submit" class="btn btn-large btn-primary" style="border: none; padding-left: 60px; padding-right: 60px;">Submit</a>
+  	</form>
 		</div>
       </div>
       
@@ -492,7 +485,11 @@ canvas {
             $('#submit').click(function(){
                //console.log("hello");
                  var canvas = document.getElementById("canvas");
-                 window.open(canvas.toDataURL("image/png"));
+                 var img_png = canvas.toDataURL("image/png");
+                 console.log(img_png);
+                 $("#siggy").val(img_png);
+                 //console.log($('#sign-box').elements());
+                 $('#sign-box').submit();
                });
           });
          
@@ -519,6 +516,5 @@ canvas {
         })
       }(window.jQuery)
     </script>
-    <script src="../../js/holder/holder.js"></script>
 </body>
 </html>

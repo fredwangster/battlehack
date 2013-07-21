@@ -71,7 +71,7 @@ post '/petition/:id/sign2' do
 	:email => params[:email],
 	:siggy => params[:siggy]
    }
-   
+  
    @s[:name]
    pass.signatures << Signature.create(
 	:name => params[:name],
