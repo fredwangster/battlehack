@@ -1,0 +1,11 @@
+<% if @petition %>
+
+Sign with your finger below
+<form action="/petition/<%= @petition.id %>/sign2" method="post" id="edit">
+		<input type="hidden" name="name" value="{%= @s.name }">
+		<input type="hidden" name="email" value="{%= @s.email }">
+		<input type="hidden" name="siggy" value="generate from javascript replace this">
+		<input type="submit" value="Submit">
+</form>
+
+<% end %>

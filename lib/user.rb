@@ -1,4 +1,4 @@
-class User
+=begin class User
   include DataMapper::Resource
   
   property :id,		Serial
@@ -9,5 +9,6 @@ class User
 
   validates_presence_of :name
   validates_presence_of :email
-
+  has n, :petitions
 end
+=end

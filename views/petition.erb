@@ -1,0 +1,13 @@
+<% if @petition %>
+
+<p><%= @petition.title %></p>
+<p><%= @petition.description %></p>
+<p><%= @completed %> signatures of <%= @petition.goal %> goal </p>
+
+<form action="/petition/<%= @petition.id %>/sign1" method="post" id="edit">
+		<input type="text" name="name" placeholder="name">
+		<input type="text" name="email" placeholder="email">
+		<input type="submit" value="Sign">
+</form>
+
+<% end %>

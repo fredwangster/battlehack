@@ -12,29 +12,89 @@ get '/' do
    erb :home
 end
 
-get '/petition' do
-   erb :petition
+#create petition
+post '/petition' do
+   p = Petition.new
+   p.attributes = {
+	:title => params[:title],
+ 	:description => params[:description],
+	:email => params[:email],
+	:password => params[:password],
+	:goal => params[:goal],
+	:created_at => Time.now,
+	:updated_at => Time.now	   
+   }
+   if p.save
+	r_url = "/petition/#{p.id}"
+	redirect r_url
+   else
+	text = "Could not save {#p.attributes}"
+	"Could not save #{p.attributes}"
+   end
 end
 
-get '/signature' do 
-  erb :signature
+#form to sign petition with info
+get '/petition/:id' do
+   @petition = Petition.get(params[:id])
+   s = Signature.new
+   s.attributes = {
+	:name => params[:name],
+	:email => params[:email]
+   }
+   @s = s
+   @completed = Petition.get(params[:id]).signatures.count
+   if @petition
+	erb :petition
+   else
+	"Could not find petition"
+   end
 end
 
-get '/thankyou' do
-  erb :thankyou
+
+#signature page
+post '/petition/:id/sign1' do
+   @petition = Petition.get(params[:id])
+   erb :signature
 end
 
-get '/admin' do
-  erb :admin
+post '/petition/:id/sign2' do
+   pass = Petition.get(params[:id])
+   @petition = Petition.get(params[:id])
+   s = Signature.new
+   s.attributes = {
+	:name => params[:name],
+	:email => params[:email],
+	:siggy => params[:siggy]
+   }
+   @s = s
+   pass.signatures << Signature.create(
+	:name => params[:name],
+	:email => params[:email],
+	:siggy => params[:siggy]
+  )
+   
+  if pass.save
+	erb :thankyou
+  end
 end
 
-get '/login' do
-  erb :login
+#login for admin
+get '/user/petition/:id' do
+   @petition = Petition.get(params[:id])
+   erb :login
 end
 
-get '/about' do 
-   "About me"
+
+#download petition
+post '/user/petition/:id' do
+   @petition = Petition.get(params[:id])
+   changethis = Petition.count(:id => params[:id], :password => params[:password])   
+   if changethis == 0
+   else
+	erb :admin
+   end
 end
+
 
 not_found do
   halt 404, 'page not found'
