@@ -89,7 +89,11 @@ end
 post '/user/petition/:id' do
    @petition = Petition.get(params[:id])
    changethis = Petition.count(:id => params[:id], :password => params[:password])   
+      
+   @completed = Petition.get(params[:id]).signatures.count
+
    if changethis == 0
+   	"invalid login"
    else
 	erb :admin
    end

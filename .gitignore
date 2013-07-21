@@ -5,3 +5,4 @@ Gemfile.lock
 *.sqlite3
 *.swp
 *.swo
+*.ds_store

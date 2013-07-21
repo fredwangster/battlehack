@@ -1,0 +1,9 @@
+<% if @petition %>
+<p> <%= @petition.title %> </p>
+Admin login
+<form action="/user/petition/<%= @petition.id %>" method="post">
+	<input type="text" name="password" placeholder="password">
+	<input type="submit" value="Ok">
+</form>
+
+<% end %>
