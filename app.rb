@@ -99,6 +99,23 @@ post '/user/petition/:id' do
    end
 end
 
+#export petition
+get '/petition/:id/export' do
+   changethis = Petition.count(:id => params[:id], :password => params[:password])
+   #if changethis == 0
+#	"invalid login"
+ #  else
+      @petition = Petition.get(params[:id])
+      @signatures = Petition.get(params[:id]).signatures
+      erb :export
+  # end
+end
+
+
+#about
+get '/about' do
+   erb :about
+end
 
 not_found do
   halt 404, 'page not found'

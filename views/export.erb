@@ -1,0 +1,23 @@
+<% if @petition %>
+	<p> <%= @petition.title %> </p>
+	<p> <%= @petition.description %> </p>
+
+	<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Signature</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @signatures.each do |signature| %>
+				<tr>
+					<td><%= signature.name %></td>
+					<td><%= signature.email %></td>
+					<td><%= signature.siggy %></td>
+				</tr>
+				<% end %>
+			</tbody>
+	</table>
+<% end %>
