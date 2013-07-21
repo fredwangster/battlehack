@@ -26,5 +26,6 @@ configure :development do
 end
 
 configure :production do
-   DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+   DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_BRONZE_URL'] || 'postgres://localhost/mydb')
+   
 end
