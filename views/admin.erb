@@ -1,13 +1,3 @@
-<% if @petition %>
-<p> <%= @petition.title %> </p>
-
-<p><%= @completed %> signatures of <%= @petition.goal %> goal </p>
-
-Download
-Email
-<% end %>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -304,7 +294,7 @@ Email
               <ul class="nav">
                 <li><a href="../">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li class="active"><a href="#admin">Admin</a></li>
+                <li class="active"><a href="#<%= @petition.id%>">Admin</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
