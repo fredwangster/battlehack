@@ -1,5 +1,12 @@
 require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
+require File.join(File.dirname(__FILE__), 'environment')
+
+configure do
+  set :views, "#{File.dirname(__FILE__)}/views"
+end
+
 
 get '/' do 
    erb :home

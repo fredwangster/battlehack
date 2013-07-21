@@ -1,9 +1,7 @@
-require "rubygems"
-require "bundler/setup"
-require "sinatra"
-require "app"
+require File.join(File.dirname(__FILE__), 'app')
 
 set :run, false
-set :raise_errors, true
+set :environment, :production
+
 
 run Sinatra::Application
