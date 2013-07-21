@@ -308,10 +308,11 @@ body {
 	overflow: hidden;
 }
 canvas {
-	position: absolute;
+	position: relative;
 	cursor: crosshair;
 	background-color: #C2DAD0;
-	margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0px;
 }
 
@@ -410,14 +411,11 @@ canvas {
 
     </div><!-- /.navbar-wrapper -->
 
-    
-    
-    <div id="container">
-      <div class="span10 offset1">
+    <div class="container marketing">
+    <div class="span5 offset3" style="text-align: center;">
         <canvas id="canvas" width="500" height="300">
             <p id="error">Please upgrade your browser.</p>
         </canvas>
-      </div>
         
         <div id="control">
         
@@ -434,10 +432,6 @@ canvas {
              
             
             <ol id="modes">
-                <li id="mode0" class="modeButton"></li>
-                <li id="mode1" class="modeButton"></li>
-                <li id="mode2" class="modeButton"></li>
-                <li id="mode3" class="modeButton"></li>
             </ol>
             
             <ol id="otherbuttons">
@@ -445,11 +439,13 @@ canvas {
             
         </div>
     </div>
-      <div class="container marketing">
+    </div>
+
+      
 
 
       <!-- START THE FEATURETTES -->
-
+<div class="container marketing">
       <div class="span10 offset1" style="text-align: center;">
         <p class="lead" style="padding-top: 15px; padding-bottom: 5px;">Sign above</p>
         <a id="but1" class="btn btn-large btn-primary" style="border: none; padding-left: 10px; padding-right: 10px; background-color: #FF9999;">RESET</a>

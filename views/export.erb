@@ -1,23 +1,41 @@
-<% if @petition %>
-	<p> <%= @petition.title %> </p>
-	<p> <%= @petition.description %> </p>
+<html>
+<head>
+<link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
+</head>
 
-	<table>
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Signature</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @signatures.each do |signature| %>
-				<tr>
-					<td><%= signature.name %></td>
-					<td><%= signature.email %></td>
-					<td><img src="<%= signature.siggy %>" /></td>
-				</tr>
-				<% end %>
-			</tbody>
-	</table>
-<% end %>
+<body>
+<div class="container marketing">
+	<% if @petition %>
+		<div style="text-align: center;">
+		<h2 class="featurette-heading"><%= @petition.title %></h2> 
+		<p class="lead"><%= @petition.description %></p>
+		
+		<table border="1" cellpadding="20" style="margin-right: auto; margin-left: auto;">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Signature</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @signatures.each do |signature| %>
+					<tr>
+						<td><%= signature.name %></td>
+						<td><%= signature.email %></td>
+						<td><img src="<%= signature.siggy %>" /></td>
+					</tr>
+					<% end %>
+				</tbody>
+		</table>
+		<p class="lead" style="padding-top: 20px;">Powered by <strong>Petitionly</strong></p>
+		</div>
+	<% end %>
+</div>
+
+</body>
+</html>
+
